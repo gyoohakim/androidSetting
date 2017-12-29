@@ -1,0 +1,56 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+
+android {
+    compileSdkVersion 26
+    defaultConfig {
+        applicationId "io.ambush.aacapplication"
+        minSdkVersion 19
+        targetSdkVersion 26
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    sourceSets {
+        main.java.srcDirs += 'src/main/kotlin'
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    testImplementation 'junit:junit:4.12'
+
+    // ViewModel and LiveData
+    implementation rootProject.ext.lifecycle
+    implementation rootProject.ext.lifecycleCompiler
+
+    // Room
+    implementation rootProject.ext.room
+    implementation rootProject.ext.roomCompiler
+
+    // Paging
+    implementation rootProject.ext.paging
+
+    //kotlin
+    implementation rootProject.ext.kotlin
+
+    //supportLib
+    implementation rootProject.ext.appcompatV7
+    implementation rootProject.ext.recyclerView
+    implementation rootProject.ext.design
+    implementation rootProject.ext.cardView
+    implementation rootProject.ext.rxAndroid
+    implementation rootProject.ext.constraintLayout
+
+
+    androidTestImplementation 'com.android.support.test:runner:1.0.1'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
+}
